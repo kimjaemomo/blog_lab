@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>혼술 안주, 실패 없는 추천 A to Z 가이드 (와인, 양주, 맥주)</title>
+    <title>혼술의 완성, 마지막 2%를 찾아서</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Pretendard Font CDN -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        /* 기본 폰트 설정 */
+        /* 기본 폰트 설정 (랜딩페이지와 동일) */
         body {
             font-family: 'Pretendard', sans-serif;
             background-color: #111827; /* bg-gray-900 */
             color: #d1d5db; /* text-gray-300 */
         }
-        /* 헤딩은 약간 더 밝게 */
+        /* 헤딩은 약간 더 밝게 (랜딩페이지와 동일) */
         h1, h2, h3 {
            color: #f9fafb; /* text-gray-50 */
            font-weight: 700;
         }
-        /* 링크 스타일 */
+        /* 링크 스타일 (랜딩페이지와 동일) */
         a {
             color: #fca5a5; /* text-red-300 */
             transition: color 0.3s ease;
@@ -36,43 +34,51 @@
         /* 커스텀 색상 변수 (랜딩페이지와 동일) */
         :root {
             --brand-red: #E52A33;
-            --brand-gold: #F7E7CE; /* 실제 사용은 노란색 계열로 대체 */
         }
         .text-brand-red { color: var(--brand-red); }
         .bg-brand-red { background-color: var(--brand-red); }
         .border-brand-red { border-color: var(--brand-red); }
 
-        /* Chart container styling (랜딩페이지와 유사하게) */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 250px;
-            max-height: 300px;
-            background-color: #1f2937; /* bg-gray-800 */
-            padding: 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid #374151; /* border-gray-700 */
+        /* 본문 가독성 스타일 (블로그 글에 맞게 조정) */
+        .prose p, .prose li {
+            color: #d1d5db; /* text-gray-300 */
+            font-size: 1.125rem; /* text-lg */
+            line-height: 1.75; /* leading-relaxed */
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 300px;
-            }
+        .prose strong {
+            color: #f9fafb; /* text-gray-50 */
         }
-
-        /* FAQ Accordion Arrow (랜딩페이지와 동일) */
-        .faq-toggle svg {
-             transition: transform 0.3s ease;
+        .prose h2 { /* 스타일 재정의 */
+            margin-top: 3rem; /* mt-12 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            padding-left: 1rem; /* pl-4 */
+            border-left-width: 4px;
+            border-color: var(--brand-red);
+            font-size: 1.875rem; /* text-3xl */
+            line-height: 2.25rem; /* leading-9 */
         }
-        .faq-toggle[aria-expanded="true"] svg {
-            transform: rotate(180deg);
+        .prose img {
+             border-radius: 0.5rem; /* rounded-lg */
+             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15); /* 어두운 배경에 맞는 그림자 */
+             margin-top: 2rem; /* my-8 */
+             margin-bottom: 2rem; /* my-8 */
         }
-        /* 본문 가독성 */
-        .prose p, .prose li { color: #d1d5db; } /* text-gray-300 */
-        .prose strong { color: #f9fafb; } /* text-gray-50 */
-        .prose blockquote { border-left-color: var(--brand-red); color: #9ca3af; } /* text-gray-400 */
+        /* BAB 구조 주석 스타일 (눈에 띄지 않게) */
+        .bab-comment {
+            display: inline-block; /* 줄바꿈 방지 */
+            margin-left: 0.25rem;
+            color: #4b5563; /* text-gray-600 */
+            font-size: 0.875rem; /* text-sm */
+            font-style: italic;
+        }
+         /* CTA 버튼 스타일 */
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
 
     </style>
 </head>
@@ -81,17 +87,17 @@
     <!-- Header (랜딩페이지 스타일 적용) -->
     <header class="bg-black bg-opacity-50 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-             <!-- 로고 영역 -->
+            <!-- 로고 영역 -->
              <a href="#" class="text-xl font-bold tracking-wider text-white">
-                <span class="text-brand-red">새우깡</span> 페어링 LAB <span class="text-sm font-normal text-gray-400 ml-1">가이드</span>
+                <span class="text-brand-red">새우깡</span> 페어링 LAB <span class="text-sm font-normal text-gray-400 ml-1">매거진</span>
             </a>
             <nav class="hidden md:flex items-center space-x-6">
                 <a href="#" class="text-gray-300 hover:text-white">LAB 홈</a>
-                <a href="#" class="text-white font-semibold border-b-2 border-brand-red pb-1">페어링 가이드</a>
+                <a href="#" class="text-gray-300 hover:text-white">페어링 가이드</a>
+                <a href="#" class="text-white font-semibold border-b-2 border-brand-red pb-1">매거진</a>
                 <a href="#" class="text-gray-300 hover:text-white">라인업</a>
-                <a href="#" class="text-gray-300 hover:text-white">이벤트</a>
             </nav>
-            <!-- Mobile Menu Button -->
+            <!-- Mobile Menu Button Placeholder -->
             <button class="md:hidden text-gray-300">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
@@ -104,184 +110,40 @@
 
             <!-- Title -->
             <header class="mb-8 md:mb-12 border-b border-gray-700 pb-6">
-                <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-3">혼술 안주, 아직도 고민이세요? 🤔 실패 없는 안주 추천 A to Z 가이드 (와인, 양주, 맥주)</h1>
-                <p class="text-gray-400 text-sm">게시일: 2025년 10월 23일</p>
+                <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-3">혼술의 완성, 마지막 2%를 찾아서</h1>
+                <p class="text-gray-400 text-sm">발행일: 2025년 10월 27일 | 에디터: Pairing LAB</p>
             </header>
 
-            <!-- Introduction -->
-            <section class="prose lg:prose-lg max-w-none text-lg leading-relaxed mb-12">
-        
-                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=2157&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="다양한 종류의 술과 안주가 놓인 테이블" class="rounded-lg shadow-md mb-8 w-full h-64 object-cover">
-                <p>오늘 하루도 정말 수고 많으셨어요! 퇴근하고 즐기는 나만의 힐링 타임, 시원한 술 한 잔만큼 소중한 게 또 있을까요? 근데 그거 아세요? 좋은 술만 있다고 완벽한 건 아니더라고요. 그 옆자리를 채워 줄 <strong>안주</strong>가 은근히 중요해요. 술이랑 <strong>안주</strong> 궁합만 잘 맞춰도 그날의 피로가 싹 풀리는 기분이랄까요? ✨</p>
-                <p>그런데 매번 비슷한 <strong>안주</strong>만 드시거나, 큰맘 먹고 고른 <strong>안주</strong>가 술이랑 따로 놀아서 아쉬웠던 적, 솔직히 있으시죠? 특히 <strong>혼술</strong>할 때는 더 신중해지잖아요. 실패하고 싶지 않으니까요!</p>
-                <p>그래서 오늘은 <strong>와인 안주 추천</strong>부터 <strong>양주 안주 추천</strong>, 우리에게 제일 친숙한 맥주 <strong>안주</strong>까지! 실패 확률은 팍 줄이고 만족도는 쭉 끌어올리는 <strong>안주</strong> 페어링 꿀팁들을 탈탈 털어보려고 해요. 이제 <strong>안주 추천</strong> 찾아 헤매지 마시고, 이 글 하나로 끝내보세요! 😎</p>
+            <!-- Content Section -->
+            <section class="prose lg:prose-lg max-w-none">
+                <p>오늘 하루, 정말 정신없었죠? 지하철에 몸을 싣고 집으로 향하는 길, 벌써부터 머릿속엔 시원한 술 한 잔이 아른거릴지도 몰라요. 큰맘 먹고 사둔 위스키, 아니면 오늘따라 당기는 쌉싸름한 IPA 맥주. 고생한 나를 위해 준비한 소중한 보상의 시간이잖아요.</p>
+
+               
+                <img src="https://cdn.pixabay.com/photo/2016/11/29/08/44/bus-1868507_1280.jpg" alt="퇴근길 지하철 창밖을 보는 모습" class="w-full h-72 object-cover">
+
+                <p>그런데 막상 잔을 채우고 한 모금 넘기는데… 뭔가 허전해요. 분명 좋은 술인데, 기대했던 ‘바로 그 느낌’이 아니에요. 냉장고를 뒤져 대충 꺼낸 과자나 배달 음식 남은 건 술맛을 해치기만 하고요. ‘아, 오늘도 뭔가 2% 부족하네.’ 혹시 이런 생각, 저만 하는 거 아니죠? <span class="bab-comment"></span></p>
+
+
+                <p>저도 그랬거든요. 퇴근 후 지친 몸을 이끌고 겨우 차린 혼술인데, 늘 그 ‘2%’ 때문에 만족스럽지 못했어요. 비싼 술을 사면 해결될까? 더 멋진 잔을 사면? 여러 시도 끝에 깨달았죠. 문제는 술이나 잔이 아니라, 바로 그 옆자리, ‘안주’였다는 걸요. 술과 안주의 궁합, 즉 ‘페어링’이 그날 밤의 만족도를 결정하는 마지막 열쇠였던 거예요. <span class="bab-comment"></span></p>
+
+               
+                <img src="https://cdn.pixabay.com/photo/2017/10/11/07/58/think-2840236_1280.jpg" alt="위스키와 안주를 앞에 두고 고민하는 모습" class="w-full h-72 object-cover">
+
+                <p>페어링, 너무 어렵게 생각할 필요 없어요. 복잡한 이론보다는 내 입맛에 귀 기울이는 게 중요하더라고요. 저 같은 경우는, 떫은맛이 도는 레드 와인에는 꾸덕한 치즈나 육포처럼 기름진 게 잘 어울렸고, 향긋한 에일 맥주에는 오히려 짭짤하면서 달콤한 스낵이 맥주 맛을 살려줬어요. 아, 스모키한 위스키에는 다크 초콜릿이 정말…! <span class="bab-comment"></span> 직접 부딪혀 보니 ‘아하!’하는 순간들이 찾아오더라고요. 요즘엔 트러플이나 고급 치즈를 넣은 프리미엄 스낵들도 많아져서, 예전처럼 어렵게 안주를 찾아 헤맬 필요도 없고요.</p>
+
+
+                <p>그렇게 조금씩 제 취향을 알아가다 보니, 어느새 저만의 ‘완벽한 한 잔’을 완성하게 됐어요. 별거 아닌 것 같지만, 술과 안주가 입안에서 완벽한 조화를 이루는 그 순간! 하루의 피로가 녹아내리고, 온전히 나에게 집중하는 충만한 만족감을 느끼게 되죠. 더 이상 ‘2% 부족함’은 없어요. 평범했던 혼술이 정말 근사한 미식의 경험으로 바뀌는 마법이랄까요? <span class="bab-comment"></span></p>
+
+                <img src="https://m.health.chosun.com/site/data/img_dir/2021/01/28/2021012802252_0.jpg" alt="만족스럽게 혼술을 즐기는 모습" class="w-full h-72 object-cover">
+
+                <p>우리의 밤은 소중하잖아요. 하루의 끝에서 마주하는 이 작은 순간들이 모여 내일의 에너지가 된다고 믿어요. 그러니 더 이상 아쉬움 속에 밤을 흘려보내지 마세요. 당신의 술잔 옆, 그 마지막 2%를 채워줄 완벽한 파트너를 찾는 여정을 시작해보는 건 어떨까요? <span class="bab-comment"></span></p>
+
             </section>
 
-            <!-- Section 1: Pain Points -->
-            <section class="mb-12 md:mb-16">
-                 <h2 class="text-2xl md:text-3xl mt-12 mb-6 font-bold border-l-4 border-brand-red pl-4">1. 그 많던 내 `안주`, 왜 항상 아쉬웠을까요? (맴찢 포인트 분석)</h2>
-                 <div class="prose lg:prose-lg max-w-none text-lg leading-relaxed space-y-4">
-                     <p>완벽할 줄 알았던 <strong>혼술</strong> 타임, 돌이켜보면 '2% 부족했어...' 싶었던 순간들. 우리 솔직히 뭐가 문제였는지 한번 짚어봐요. (격공 주의!)</p>
-                     <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">앗, 내 술맛 돌려줘요! (맛의 충돌)</h3>
-                     <p>이거 진짜 흔한 실수인데요, 섬세한 향이 매력인 화이트 와인 마시는데 너무 자극적인 향신료 범벅 <strong>안주</strong>를 먹는다거나... 스모키함이 생명인 위스키에 너무 달거나 짠 <strong>안주</strong>를 매칭하면? 술 본연의 매력은 저 멀리 안드로메다로...😇 술이 주인공인지 <strong>안주</strong>가 주인공인지 헷갈리는 대참사가 벌어지죠.</p>
-                     <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">혹시 TPO라고 아세요...? (분위기 부조화)</h3>
-                     <p>가볍게 맥주 한 캔 마시고 싶은 밤에 막 스테이크 굽고 있으면 좀 그렇잖아요? 반대로 특별한 날 비싼 <strong>양주</strong> 깠는데 <strong>안주</strong>가 너무 평범해서 김새는 경우도 있고요. 술과 <strong>안주</strong>, 그리고 그날의 '무드'까지 챙기는 센스! 이게 은근 중요하답니다.</p>
-                     <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">선택 장애 + 정보 부족 = `편의점 안주` 무한 루프</h3>
-                     <p>늦은 밤, 선택지는 <strong>편의점 안주</strong> 코너뿐... 근데 막상 가면 또 늘 먹던 거 고르는 나 자신 발견! 😩 내 술이랑 진짜 잘 어울리는 <strong>안주</strong>가 뭔지, 좀 더 괜찮은 선택지는 없는지 정보가 부족해서 그래요. 익숙함도 좋지만, 가끔은 새로운 미식의 세계로 떠나보는 용기가 필요해요!</p>
-                     
-                     <div class="mt-8 mb-6">
-                         <div class="chart-container">
-                             <canvas id="painPointChart"></canvas>
-                         </div>
-                         <p class="text-xs text-gray-500 text-center mt-2">자료: LAB 자체 설문조사 결과 (가상 데이터)</p>
-                     </div>
-                 </div>
-            </section>
-
-             <!-- Section 2: Pairing Basics -->
-            <section class="mb-12 md:mb-16">
-                <h2 class="text-2xl md:text-3xl mt-12 mb-6 font-bold border-l-4 border-brand-red pl-4">2. 실패 확률↓ 만족도↑ `안주` 페어링 기본 공식! (핵심 정보 줍줍)</h2>
-                 <div class="prose lg:prose-lg max-w-none text-lg leading-relaxed space-y-4">
-                    <p>'페어링'이 뭐 별거냐 싶겠지만, 이게 은근 과학이거든요? 술이랑 <strong>안주</strong>가 서로 밀어주고 끌어주면서 맛과 향이 폭발하는 시너지를 만드는 기술이랄까요? 몇 가지 기본 공식만 알아두셔도 실패 확률 확 줄일 수 있어요!</p>
-
-                    <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">`와인 안주 추천` 핵심 공식:</h3>
-                    <p>와인 종류가 너-무 많아서 어렵다고요? 걱정 마세요, 일단 이것만 기억하세요!</p>
-                    <ul class="list-disc list-outside space-y-2 pl-5">
-                        <li><strong>Tip 1: 레드 와인 (떫은맛 담당) + 기름지고 단백질 빵빵 `안주`</strong>: 스테이크, 양갈비, 찐한 치즈🧀 같은 메뉴들이 레드 와인의 떫은맛(타닌)을 부드럽게 감싸 안아줘요. 환상 궁합!</li>
-                        <li><strong>Tip 2: 화이트 와인 (상큼함 담당) + 해산물, 샐러드 등 산뜻 깔끔 `안주`</strong>: 화이트 와인의 상큼함이 해산물의 비릿함을 싹 잡아주고 프레시함을 더해줘요. 찰떡궁합!</li>
-                        <li><strong>Tip 3: 스파클링 와인 (톡톡 터짐 담당) + 튀김, 과일, 의외로 매콤 `안주`</strong>: 톡 쏘는 탄산이 튀김의 느끼함을 리셋! 과일의 상큼함이랑도 잘 어울리고, 의외로 매콤한 떡볶이랑도 케미 폭발이에요. ✨</li>
-                    </ul>
-                     
-                    <img src="https://cdn.pixabay.com/photo/2023/08/15/11/20/ai-generated-8191760_1280.jpg" alt="와인과 치즈 플래터" class="rounded-lg shadow-md my-6 w-full h-64 object-cover">
-
-                    <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">`양주 안주 추천` (위스키/브랜디) 핵심 공식:</h3>
-                    <p>도수도 높고 향도 복잡한 <strong>양주</strong>는 <strong>안주</strong> 매칭에 조금 더 섬세함이 필요해요.</p>
-                     <ul class="list-disc list-outside space-y-2 pl-5">
-                        <li><strong>Tip 1: 향이 찐한 술 (스모키, 피트 위스키 등) + 스모키/달콤쌉쌀/고소 `안주`</strong>: 다크 초콜릿🍫, 훈제 치즈, 견과류, 육포처럼 존재감 있는 <strong>안주</strong>들이 복합적인 술의 향이랑 어우러지면서 깊이가 달라져요.</li>
-                        <li><strong>Tip 2: 비교적 가벼운 타입 (버번 위스키, 꼬냑 VSOP 등) + 과일, 까나페, 부드러운 치즈</strong>: 술 맛을 방해하지 않으면서 가볍게 곁들일 수 있는 깔끔한 <strong>안주</strong>들이 좋아요.</li>
-                    </ul>
-                     <img src="https://cdn.pixabay.com/photo/2017/01/07/20/41/alcohol-1961542_1280.jpg" alt="위스키와 다크 초콜릿" class="rounded-lg shadow-md my-6 w-full h-64 object-cover">
-
-
-                    <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">국민 술! 맥주/전통주 `안주 추천` 기본:</h3>
-                    <p>제일 만만하지만, 그래서 더 페어링의 재미가 쏠쏠하죠!</p>
-                     <ul class="list-disc list-outside space-y-2 pl-5">
-                        <li><strong>라거 (청량함 끝판왕):</strong> 치킨🍗, 감자튀김🍟처럼 짭짤하거나 기름진 튀김류랑은 뭐... 말해 뭐해요? 국룰 조합!</li>
-                        <li><strong>에일 (개성파):</strong> 홉 향이나 몰트 맛이 강하니까, 소시지, 피자🍕, 버거🍔처럼 맛이 비교적 진한 <strong>안주</strong>랑 만나야 밸런스가 딱 맞아요.</li>
-                        <li><strong>막걸리 (K-술):</strong> 특유의 달달함과 산미는 파전, 두부김치, 보쌈 같은 한식 <strong>안주</strong>랑 만났을 때 포텐 터져요! 👍</li>
-                    </ul>
-
-                     <img src="https://cdn.pixabay.com/photo/2023/06/29/16/13/beer-8096665_1280.jpg" class="rounded-lg shadow-md my-6 w-full h-64 object-cover">
-
-                     
-                     <div class="mt-8 p-4 bg-gray-700 rounded text-center text-sm text-gray-300">
-                         
-                     </div>
-                 </div>
-            </section>
-
-             <!-- Section 3: Finding Preference -->
-            <section class="mb-12 md:mb-16">
-                 <h2 class="text-2xl md:text-3xl mt-12 mb-6 font-bold border-l-4 border-brand-red pl-4">3. 근데... 내 취향은? 🤔 완벽한 `안주` 조합 찾는 현실적인 방법들</h2>
-                <div class="prose lg:prose-lg max-w-none text-lg leading-relaxed space-y-4">
-                    <p>페어링 공식은 알겠는데, 결국 제일 중요한 건 '내 입맛' 아니겠어요? 근데 수많은 술과 <strong>안주</strong> 속에서 '나만의 정답'을 찾는 게 생각보다 쉽지 않단 말이죠. 이럴 땐 어떡하면 좋을까요?</p>
-
-                    <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">전문가 찬스 쓰기:</h3>
-                    <p>믿을 만한 소믈리에나 푸드 인플루언서의 <strong>안주 추천</strong>을 참고하는 거예요. 이미 검증된 조합이라 실패 확률은 적지만, 가끔 내 취향이랑 안 맞거나 구하기 힘든 <strong>안주</strong>일 수도 있다는 게 함정이죠. 😂</p>
-
-                    <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">몸으로(?) 부딪히기:</h3>
-                    <p>직접 먹어보는 게 최고죠! 다양한 조합을 시도하면서 '오 이건 좀 괜찮네?' 싶은 건 '성공 노트'에, '어우 이건 아니야' 싶은 건 '실패 노트'에 기록하는 거예요. 시간과 돈은 좀 들겠지만, 내 취향 레이더를 가장 정확하게 업그레이드할 수 있는 방법!</p>
-
-                    <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">요즘 핫한 기술 활용하기:</h3>
-                    <p>빅데이터랑 AI 기술이 발전하면서, 내 취향에 딱 맞는 페어링을 찾아주는 서비스들도 속속 등장하고 있어요. 생각지도 못했던 조합을 발견하는 재미도 쏠쏠하고, 바쁜 와중에 일일이 찾아볼 필요 없으니 편하기도 하고요. 아직은 발전 중이지만, 똑똑한 <strong>혼술</strong> 메이트가 될 수 있죠!</p>
-                    <p class="mt-4 bg-gray-700 p-4 rounded text-base">
-                        예를 들어, 최근 등장한 AI 페어링 툴 중에는 내 기분이나 오늘 마실 술, 좋아하는 맛을 입력하면 딱 맞는 스낵 페어링을 추천해주는 서비스도 있더라고요. 개인 맞춤 <strong>안주 추천</strong>이 궁금하다면 <a href="#">이런 신박한 서비스(새우깡 페어링 LAB 링크)</a> 한번 구경해보는 것도 재밌을 거예요. 😉
-                    </p>
-                </div>
-            </section>
-
-             <!-- Section 4: Snack Trends -->
-            <section class="mb-12 md:mb-16">
-                 <h2 class="text-2xl md:text-3xl mt-12 mb-6 font-bold border-l-4 border-brand-red pl-4">4. 요즘 `안주` 트렌드는? 😎 선택의 폭을 넓혀보자고요!</h2>
-                <div class="prose lg:prose-lg max-w-none text-lg leading-relaxed space-y-4">
-                    <p>요즘 과자 코너 가보면 깜짝 놀랄 때 많지 않으세요? 더 이상 과자는 애들만 먹는 간식이 아니라는 말씀! 어른들의 입맛과 니즈를 저격하는 프리미엄 스낵들이 완전 대세거든요. <strong>혼술</strong>의 퀄리티를 수직 상승시켜 줄 요즘 스낵 트렌드, 같이 한번 살펴볼까요?</p>
-
-                     <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">풍미 레벨 UP! 프리미엄 재료의 습격</h3>
-                     <p>트러플 오일 뿌린 감자칩, 그뤼에르 치즈 들어간 크래커🧀... 이름만 들어도 고급짐이 느껴지지 않나요? 이런 프리미엄 식재료를 활용한 스낵들이 인기 폭발이에요. 특히 <strong>와인</strong>이나 <strong>양주</strong>랑 같이 먹으면 그 진가를 제대로 느낄 수 있죠. 평범했던 <strong>혼술</strong> 시간이 갑자기 미슐랭 부럽지 않게 변하는 마법! ✨</p>
-                     
-                     <img src="https://www.gosupps.com/media/catalog/product/cache/25/image/1500x/040ec09b1e35df139433887a97daa66f/9/1/91XBrM2sTfL._SL1500_.jpg" alt="트러플 스낵과 와인" class="rounded-lg shadow-md my-6 w-full h-64 object-cover">
-
-                     <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">식감 & 맛의 신세계: 익숙한 듯 새롭게!</h3>
-                     <p>그냥 짜고 단 맛은 이제 지겹잖아요? 마라나 스리라차처럼 특별하게 맵거나, 커리, 큐민 같은 이국적인 향신료를 더한 스낵들이 사랑받고 있어요. 아니면 아예 엄청 바삭하거나 쫄깃한, 새로운 식감으로 승부하는 애들도 있고요! 이런 익숙한 듯 새로운 맛은 술자리에 즐거운 자극을 팍팍 준답니다.</p>
-
-                     <h3 class="text-xl md:text-2xl font-bold mt-8 mb-3 text-red-300">맛있는데 건강까지? '헬시 플레저' 스낵</h3>
-                    <p>맛있는 거 먹으면서 건강도 챙기고 싶은 우리 마음, 다 똑같잖아요? 😉 이런 '헬시 플레저' 트렌드가 스낵 시장에도 불고 있어요. 나트륨 함량 줄인 저염 스낵, 설탕 대신 대체 감미료 쓴 저당 스낵, 글루텐프리, 단백질 함량 높인 스낵까지! 이제 <strong>안주</strong> 고를 때 선택지가 훨씬 다양해졌다는 사실!</p>
-
-                  
-                     <div class="mt-8 mb-6">
-                         <div class="chart-container">
-                             <canvas id="trendChart"></canvas>
-                         </div>
-                         <p class="text-xs text-gray-500 text-center mt-2">자료: 검색 트렌드 분석 (가상 데이터)</p>
-                     </div>
-                 </div>
-            </section>
-
-             <!-- Section 5: FAQ -->
-            <section class="mb-12 md:mb-16">
-                 <h2 class="text-2xl md:text-3xl mt-12 mb-6 font-bold border-l-4 border-brand-red pl-4">5. `혼술 안주` 궁금증 타파! (FAQ 타임)</h2>
-                <div class="space-y-4">
-                    
-                    <div class="bg-gray-800 border border-gray-700 rounded-lg">
-                        <button class="faq-toggle flex justify-between items-center w-full p-5 text-left text-white font-semibold" aria-expanded="false">
-                            <span>비싼 술에는 꼭 비싼 안주만 먹어야 하나요?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400"></i>
-                        </button>
-                        <div class="faq-answer hidden p-5 pt-0 text-gray-300">
-                            <p>놉! 중요한 건 가격이 아니라 술과의 '케미'예요. 가끔은 몇 천 원짜리 과자가 몇 만 원짜리 <strong>안주</strong>보다 더 감동적인 맛을 선사하기도 한다니까요? 핵심은 맛과 향의 밸런스! 비싼 거 찾느라 스트레스받지 말고, 부담 없이 이것저것 시도해보는 게 최고예요.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-800 border border-gray-700 rounded-lg">
-                         <button class="faq-toggle flex justify-between items-center w-full p-5 text-left text-white font-semibold" aria-expanded="false">
-                            <span>`편의점 안주` 중에서도 꿀조합 있을까요?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400"></i>
-                        </button>
-                        <div class="faq-answer hidden p-5 pt-0 text-gray-300">
-                            <p>당연하죠! <strong>편의점 안주</strong>는 우리 <strong>혼술</strong>러들의 든든한 친구 아니겠어요? 😉 예를 들어, 짭짤한 기본 감자칩은 라거 맥주랑 영혼의 단짝이고, 달콤 쌉싸름한 다크 초콜릿은 위스키랑 그렇게 잘 어울려요. 조금만 신경 쓰면 <strong>편의점 안주</strong>로도 충분히 힙한 페어링을 즐길 수 있답니다!</p>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-800 border border-gray-700 rounded-lg">
-                         <button class="faq-toggle flex justify-between items-center w-full p-5 text-left text-white font-semibold" aria-expanded="false">
-                            <span>매번 같은 `안주`만 먹게 돼요... 새로운 시도는 어떻게 하죠?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400"></i>
-                        </button>
-                        <div class="faq-answer hidden p-5 pt-0 text-gray-300">
-                            <p>오늘 배운 페어링 기본 공식을 떠올리면서, 평소 마시는 술에 딱 한 번만 다른 스타일의 <strong>안주</strong>를 매칭해보는 건 어때요? 늘 치맥만 했다면, 오늘은 에일 맥주에 치즈 스낵을 곁들여보는 거죠! 혹은 앞에서 살짝 얘기했던 AI 페어링 추천 서비스 같은 도구를 재미 삼아 이용해보면서 새로운 아이디어를 얻는 것도 완전 추천해요! <a href="#">(예시 서비스 참고: 새우깡 페어링 LAB 링크)</a></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-           
-            <section class="mt-12 pt-8 border-t border-gray-700">
-                <div class="prose lg:prose-lg max-w-none text-lg leading-relaxed text-center">
-                  
-                    <img src="https://cdn.pixabay.com/photo/2023/11/11/19/58/whisky-8381775_1280.jpg" alt="만족스럽게 혼술을 즐기는 모습" class="rounded-lg shadow-md mb-8 w-full max-w-2xl mx-auto h-64 object-cover">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-4">자, 이제 `혼술` 레벨 업! ✨</h2>
-                    <p>이제 <strong>안주</strong> 선택의 기본 공식부터 요즘 핫한 트렌드까지 알게 되셨으니, 당신의 <strong>혼술</strong> 시간이 한 단계 더 업그레이드될 준비 완료! 중요한 건 단순히 비싸거나 유행하는 <strong>안주</strong>를 따라 하는 게 아니라, <strong>'내 술'과 '내 입맛'에 딱 맞는 최적의 조합</strong>을 찾아가는 여정 그 자체를 즐기는 거예요.</p>
-                    <p>오늘 얻은 꿀팁들을 바로 써먹어 보는 것도 좋고, 때로는 AI 페어링 추천 같은 신박한 도구의 도움을 받아보는 것도 스마트한 방법이 될 수 있겠죠? 😉</p>
-                 
-                    <div class="mt-10 bg-gray-700 p-6 rounded-lg max-w-xl mx-auto">
-                         <p class="text-white font-semibold mb-3">당신의 완벽한 혼술 파트너를 찾는 여정, 지금 시작해보세요!</p>
-                         <a href="#" class="inline-block bg-brand-red text-white font-bold px-6 py-3 rounded-md hover:opacity-90 transition-opacity">
-                             프리미엄 페어링 스낵 둘러보기 & AI 페어링 테스트
-                         </a>
-                         <p class="text-xs text-gray-400 mt-2">(새우깡 페어링 LAB에서 더 알아보세요)</p>
-                    </div>
-                </div>
-            </section>
+             <!-- Final Question (Original) -->
+            <div class="text-center mt-12 pt-8 border-t border-gray-700">
+                <p class="text-lg text-gray-400 font-semibold">오늘, 당신의 하루는 어떠셨나요?</p>
+            </div>
 
         </article>
     </main>
@@ -290,7 +152,7 @@
     <footer class="bg-black border-t border-gray-800 mt-16 md:mt-24">
         <div class="container mx-auto px-6 py-16">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-            
+
                 <div class="md:col-span-5 lg:col-span-4">
                     <h2 class="text-2xl font-bold tracking-wider mb-4 text-white">
                         <span style="color: var(--brand-red);">새우깡</span> 페어링 LAB
@@ -303,10 +165,10 @@
                     <p class="text-xs text-gray-500 mt-3">개인정보 처리방침에 동의하며 최신 소식을 수신합니다.</p>
                 </div>
 
-             
+
                 <div class="hidden lg:block lg:col-span-1"></div>
 
-                
+
                 <div class="md:col-span-7 lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
                     <div>
                         <h3 class="font-semibold text-white mb-4 tracking-wider">회사 소개</h3>
@@ -345,151 +207,6 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
-
-        // --- Chart.js ---
-        // Chart 1: Pain Points
-        const painPointCtx = document.getElementById('painPointChart');
-        if (painPointCtx) {
-            new Chart(painPointCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['맛 부조화 경험', '매번 비슷한 선택', '원하는 정보 부족'],
-                    datasets: [{
-                        label: '응답 비율 (%)',
-                        data: [45, 30, 25],
-                        backgroundColor: [
-                            'rgba(239, 68, 68, 0.6)', // text-red-500
-                            'rgba(248, 113, 113, 0.6)', // text-red-400
-                            'rgba(252, 165, 165, 0.6)'  // text-red-300
-                        ],
-                        borderColor: [
-                             'rgba(239, 68, 68, 1)',
-                             'rgba(248, 113, 113, 1)',
-                             'rgba(252, 165, 165, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    indexAxis: 'y', // Horizontal bar chart
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        title: {
-                            display: true,
-                            text: '혼술 시 안주 불만족 이유 (가상 데이터)',
-                            color: '#f9fafb', // text-gray-50
-                            font: { size: 14, family: "'Pretendard', sans-serif" }
-                        },
-                        tooltip: {
-                            backgroundColor: '#374151', // bg-gray-700
-                            titleColor: '#f9fafb',
-                            bodyColor: '#d1d5db',
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.label}: ${context.raw}%`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            beginAtZero: true,
-                            max: 50,
-                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                            ticks: { color: '#9ca3af' } // text-gray-400
-                        },
-                        y: {
-                            grid: { display: false },
-                             ticks: { color: '#d1d5db' } // text-gray-300
-                        }
-                    }
-                }
-            });
-        }
-
-        // Chart 2: Snack Trends
-        const trendCtx = document.getElementById('trendChart');
-        if (trendCtx) {
-             new Chart(trendCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['#트러플스낵', '#저당과자', '#단백질스낵'],
-                    datasets: [{
-                        label: '검색량 증가율 (%)',
-                        data: [75, 55, 65], // Example growth data
-                         backgroundColor: [
-                            'rgba(239, 68, 68, 0.6)',
-                            'rgba(248, 113, 113, 0.6)',
-                            'rgba(252, 165, 165, 0.6)'
-                        ],
-                        borderColor: [
-                             'rgba(239, 68, 68, 1)',
-                             'rgba(248, 113, 113, 1)',
-                             'rgba(252, 165, 165, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                     indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        title: {
-                            display: true,
-                            text: '최근 1년간 인기 스낵 키워드 검색량 변화 (가상 데이터)',
-                             color: '#f9fafb',
-                            font: { size: 14, family: "'Pretendard', sans-serif" }
-                        },
-                        tooltip: {
-                            backgroundColor: '#374151',
-                            titleColor: '#f9fafb',
-                            bodyColor: '#d1d5db',
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.label}: ${context.raw}% 증가`;
-                                }
-                            }
-                        }
-                    },
-                     scales: {
-                        x: {
-                            beginAtZero: true,
-                            max: 100,
-                             grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                             ticks: { color: '#9ca3af' }
-                        },
-                        y: {
-                             grid: { display: false },
-                             ticks: { color: '#d1d5db' }
-                        }
-                    }
-                }
-            });
-        }
-
-        // --- FAQ Accordion ---
-        const faqToggles = document.querySelectorAll('.faq-toggle');
-        faqToggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const answer = toggle.nextElementSibling;
-                const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
-
-                toggle.setAttribute('aria-expanded', !expanded);
-                answer.classList.toggle('hidden');
-
-                // Close other open FAQs
-                faqToggles.forEach(otherToggle => {
-                    if (otherToggle !== toggle) {
-                        otherToggle.setAttribute('aria-expanded', 'false');
-                        otherToggle.nextElementSibling.classList.add('hidden');
-                    }
-                });
-            });
-        });
     </script>
 
 </body>
